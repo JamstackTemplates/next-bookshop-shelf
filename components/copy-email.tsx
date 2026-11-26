@@ -28,10 +28,10 @@ export function CopyEmail({ email }: { email: string }) {
 
   return (
     <>
-      <button type="button" className="button button-quiet" onClick={copy}>
+      <button type="button" className="button-secondary min-h-9 px-3 py-1.5 text-sm" onClick={copy}>
         Copy address
       </button>
-      <span className="copy-status text-[.9375rem] text-muted" role="status" aria-live="polite">
+      <span className="copy-status text-sm text-ink-muted" role="status" aria-live="polite">
         {state === 'copied' ? 'Copied to clipboard.' : state === 'failed' ? 'Couldn’t copy — select the address instead.' : ''}
       </span>
     </>

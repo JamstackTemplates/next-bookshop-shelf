@@ -1,20 +1,61 @@
 import type { ReactNode } from 'react';
+import { business } from '../content/business';
+import { BookplateCornerFlourish, GiltRule } from './art/marks';
 
-/** Heading block for inner pages: eyebrow, large title (use <em> for the accent words) and a lede. */
-export function PageHead({ eyebrow, title, children, id, before }: {
-  eyebrow: string;
+/**
+ * Book-style page head for inner routes:
+ * running head ("The Lamplit Page · Section"), large IM Fell heading,
+ * italic standfirst, bespoke section motif on the right, corner flourishes and a gilt tooled rule.
+ */
+export function PageHead({
+  section,
+  title,
+  children,
+  motif,
+  id,
+}: {
+  section: string;
   title: ReactNode;
   children?: ReactNode;
+  motif?: ReactNode;
   id?: string;
-  /** Optional illustration above the eyebrow. */
-  before?: ReactNode;
 }) {
   return (
-    <header className="wrap pt-[clamp(2.5rem,6vw,4.5rem)] pb-[clamp(1.5rem,3vw,2.5rem)]">
-      {before}
-      <p className="eyebrow">{eyebrow}</p>
-      <h1 id={id} className="mt-3 mb-5 max-w-[18ch] text-[clamp(2.6rem,6.5vw,4.6rem)]">{title}</h1>
-      {children ? <div className="max-w-(--measure) text-[clamp(1.08rem,1.6vw,1.22rem)] text-muted">{children}</div> : null}
+    <header className="hero-stage relative overflow-hidden pt-10 pb-6 sm:pt-14 sm:pb-8">
+      <BookplateCornerFlourish
+        corner="top-left"
+        className="absolute top-3 left-3 hidden h-16 w-16 opacity-60 sm:block"
+      />
+      <BookplateCornerFlourish
+        corner="top-right"
+        className="absolute top-3 right-3 hidden h-16 w-16 opacity-60 sm:block"
+      />
+      <div className="wrap relative z-10">
+        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div className="max-w-(--measure)">
+            <p className="running-head">
+              {business.name} · {section}
+            </p>
+            <h1
+              id={id}
+              className="mt-3 font-display text-[clamp(2.5rem,5.5vw,4.25rem)] leading-[1.06] text-ink"
+            >
+              {title}
+            </h1>
+            {children ? (
+              <div className="mt-4 text-lg italic leading-relaxed text-ink-muted sm:text-xl">
+                {children}
+              </div>
+            ) : null}
+          </div>
+          {motif ? (
+            <div className="shrink-0 self-start md:self-end" aria-hidden="true">
+              {motif}
+            </div>
+          ) : null}
+        </div>
+        <GiltRule className="mt-8" />
+      </div>
     </header>
   );
 }

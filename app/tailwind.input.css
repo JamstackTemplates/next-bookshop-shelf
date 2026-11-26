@@ -2,111 +2,918 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --bg: #f7f8fa;
-  --surface: #ffffff;
-  --text: #172033;
-  --muted: #526078;
-  --accent: #2457a7;
-  --accent-ink: #2457a7;
-  --on-accent: #ffffff;
-  --line: #c7cfdb;
-  --focus: #2457a7;
-  --map-filter: none;
+  --in-oklab: ;
+  --paper: #F4ECDD;
+  --paper-deep: #E8DBC5;
+  --paper-edge: #DFCFAF;
+  --surface: #FBF6EC;
+  --ink: #2A2119;
+  --ink-muted: #5E4F40;
+  --primary: #2E5A43;
+  --primary-hover: #244A37;
+  --on-primary: #FFFFFF;
+  --link: #2E5A43;
+  --art-ink: #2A2119;
+  --oxblood: #7A2E2A;
+  --lamp: #D9952E;
+  --gilt: #A8834A;
+  --gilt-soft: #C8A96E;
+  --walnut: #4A3226;
+  --walnut-deep: #342017;
+  --walnut-ink: #F4ECDD;
+  --walnut-muted: #D8C7AE;
+  --stamp: #5B3F7A;
+  --line: #D6C7AE;
+  --focus: #2E5A43;
+
+  /* Shelf cloth colours */
+  --spine-fiction: #2E5A43;
+  --spine-crime: #7A2E2A;
+  --spine-nonfiction: #2F4A6B;
+  --spine-poetry: #8A6A2E;
+  --spine-children: #B5653B;
+  --spine-scotland: #4C5B3A;
+
+  /* Hero window atmosphere (late afternoon) */
+  --hero-sky: #D8E0E2;
+  --hero-sky-low: #E9DEC9;
+  --hero-stone: #CFC3AE;
+  --hero-interior: #3A271C;
+  --hero-glow-opacity: 0.44;
+  --hero-rain-opacity: 0;
+  --hero-stars-opacity: 0;
+  --cat-coat: #8A8780;
+  --cat-stripe: #5D5B55;
+
+  --map-filter: sepia(0.18) contrast(0.98);
   color-scheme: light;
 }
-@media (prefers-color-scheme: dark) {
- :root:not(.light) {
-  --bg: #141923;
-  --surface: #1e2633;
-  --text: #f1f5fa;
-  --muted: #b5c2d5;
-  --accent: #2457a7;
-  --accent-ink: #a9cbff;
-  --on-accent: #ffffff;
-  --line: #61708a;
-  --focus: #a9cbff;
-  --map-filter: grayscale(.4) brightness(.8);
-  color-scheme: dark;
- }
+
+@supports (background: linear-gradient(in oklab, white, black)) {
+  :root {
+    --in-oklab: in oklab;
+  }
 }
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    --paper: #17120E;
+    --paper-deep: #211913;
+    --paper-edge: #110C09;
+    --surface: #251C16;
+    --ink: #EFE3CC;
+    --ink-muted: #BFAE93;
+    --primary: #3B7556;
+    --primary-hover: #336A4D;
+    --on-primary: #FFFFFF;
+    --link: #85C9A3;
+    --art-ink: #120C08;
+    --oxblood: #C2665C;
+    --lamp: #F2B654;
+    --gilt: #C9A66B;
+    --gilt-soft: #9E7D48;
+    --walnut: #2C1E16;
+    --walnut-deep: #1C120D;
+    --walnut-ink: #EFE3CC;
+    --walnut-muted: #CBB99D;
+    --stamp: #A890C9;
+    --line: #3A2C22;
+    --focus: #F2B654;
+
+    /* Lifted ~10% lightness so cloth spines read clearly on dark walnut */
+    --spine-fiction: #3B7556;
+    --spine-crime: #9C433D;
+    --spine-nonfiction: #456994;
+    --spine-poetry: #AD873F;
+    --spine-children: #CE7C50;
+    --spine-scotland: #65794E;
+
+    /* Hero window atmosphere (after hours) */
+    --hero-sky: #0E1522;
+    --hero-sky-low: #1B2332;
+    --hero-stone: #2B241E;
+    --hero-interior: #241710;
+    --hero-glow-opacity: 0.76;
+    --hero-rain-opacity: 0.48;
+    --hero-stars-opacity: 0.65;
+    --cat-coat: #98948C;
+    --cat-stripe: #68645E;
+
+    --map-filter: grayscale(0.45) brightness(0.78) contrast(1.05) sepia(0.2);
+    color-scheme: dark;
+  }
+}
+
 :root.dark {
-  --bg: #141923;
-  --surface: #1e2633;
-  --text: #f1f5fa;
-  --muted: #b5c2d5;
-  --accent: #2457a7;
-  --accent-ink: #a9cbff;
-  --on-accent: #ffffff;
-  --line: #61708a;
-  --focus: #a9cbff;
-  --map-filter: grayscale(.4) brightness(.8);
+  --paper: #17120E;
+  --paper-deep: #211913;
+  --paper-edge: #110C09;
+  --surface: #251C16;
+  --ink: #EFE3CC;
+  --ink-muted: #BFAE93;
+  --primary: #3B7556;
+  --primary-hover: #336A4D;
+  --on-primary: #FFFFFF;
+  --link: #85C9A3;
+  --art-ink: #120C08;
+  --oxblood: #C2665C;
+  --lamp: #F2B654;
+  --gilt: #C9A66B;
+  --gilt-soft: #9E7D48;
+  --walnut: #2C1E16;
+  --walnut-deep: #1C120D;
+  --walnut-ink: #EFE3CC;
+  --walnut-muted: #CBB99D;
+  --stamp: #A890C9;
+  --line: #3A2C22;
+  --focus: #F2B654;
+
+  --spine-fiction: #3B7556;
+  --spine-crime: #9C433D;
+  --spine-nonfiction: #456994;
+  --spine-poetry: #AD873F;
+  --spine-children: #CE7C50;
+  --spine-scotland: #65794E;
+
+  --hero-sky: #0E1522;
+  --hero-sky-low: #1B2332;
+  --hero-stone: #2B241E;
+  --hero-interior: #241710;
+  --hero-glow-opacity: 0.76;
+  --hero-rain-opacity: 0.48;
+  --hero-stars-opacity: 0.65;
+  --cat-coat: #98948C;
+  --cat-stripe: #68645E;
+
+  --map-filter: grayscale(0.45) brightness(0.78) contrast(1.05) sepia(0.2);
   color-scheme: dark;
 }
 
 @theme {
   --color-*: initial;
-  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --radius-ui: .375rem;
+  --font-display: 'IM Fell English', Georgia, serif;
+  --font-sc: 'IM Fell English SC', 'IM Fell English', Georgia, serif;
+  --font-serif: 'Crimson Pro Variable', 'Crimson Pro', Georgia, serif;
+  --font-hand: 'Nothing You Could Do', 'Crimson Pro Variable', Georgia, cursive;
+  --radius-ui: 0.25rem;
 }
+
 @theme inline {
-  --color-bg: var(--bg);
+  --color-paper: var(--paper);
+  --color-paper-deep: var(--paper-deep);
   --color-surface: var(--surface);
-  --color-ink: var(--text);
-  --color-muted: var(--muted);
-  --color-accent: var(--accent);
-  --color-accent-ink: var(--accent-ink);
-  --color-on-accent: var(--on-accent);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-on-primary: var(--on-primary);
+  --color-oxblood: var(--oxblood);
+  --color-lamp: var(--lamp);
+  --color-gilt: var(--gilt);
+  --color-gilt-soft: var(--gilt-soft);
+  --color-walnut: var(--walnut);
+  --color-walnut-deep: var(--walnut-deep);
+  --color-walnut-ink: var(--walnut-ink);
+  --color-walnut-muted: var(--walnut-muted);
+  --color-stamp: var(--stamp);
   --color-line: var(--line);
 }
+
 :root {
-  --measure: 42rem;
-  --jamstacks-font-family: var(--font-sans);
-  --jamstacks-color-text: var(--text);
+  --measure: 62ch;
+  --jamstacks-font-family: var(--font-serif);
+  --jamstacks-color-text: var(--ink);
   --jamstacks-color-background: var(--surface);
-  --jamstacks-color-primary: var(--accent);
+  --jamstacks-color-primary: var(--primary);
   --jamstacks-color-border: var(--line);
-  --jamstacks-color-muted: var(--muted);
-  --jamstacks-color-link: var(--accent-ink);
+  --jamstacks-color-muted: var(--ink-muted);
+  --jamstacks-color-link: var(--link);
   --jamstacks-border-radius: var(--radius-ui);
   --jamstacks-control-height: 2.75rem;
   --jamstacks-spacing: 1rem;
   --jamstacks-form-max-width: 40rem;
-  --jamstacks-toggle-color: var(--text);
-  --jamstacks-toggle-dark-color: var(--text);
-  --jamstacks-toggle-border: var(--line);
-  --jamstacks-toggle-background: var(--surface);
-  --jamstacks-toggle-dark-background: var(--surface);
-  --jamstacks-toggle-focus-color: var(--focus);
+  --jamstacks-toggle-color: var(--walnut-ink);
+  --jamstacks-toggle-dark-color: var(--walnut-ink);
+  --jamstacks-toggle-border: var(--gilt);
+  --jamstacks-toggle-background: var(--walnut-deep);
+  --jamstacks-toggle-dark-background: var(--walnut-deep);
+  --jamstacks-toggle-focus-color: var(--lamp);
 }
+
 @layer base {
-  html { background: var(--bg); color: var(--text); font-family: var(--font-sans); scroll-padding-top: 1.5rem; }
-  body { margin: 0; line-height: 1.6; }
-  main { min-height: 65vh; }
-  a { text-underline-offset: .2em; }
-  a:hover { text-decoration: underline; }
-  button { cursor: pointer; }
-  :focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }
-  [aria-current="page"] { text-decoration: underline; }
+  html {
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-serif);
+    font-size: 106.25%;
+    scroll-padding-top: 2rem;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    margin: 0;
+    line-height: 1.62;
+    background-color: var(--paper);
+    color: var(--ink);
+  }
+  main {
+    min-height: 65vh;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    line-height: 1.12;
+  }
+  a {
+    text-underline-offset: 0.22em;
+    text-decoration-thickness: 1px;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  button {
+    cursor: pointer;
+  }
+  :focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 3px;
+  }
+  [aria-current="page"] {
+    text-decoration: underline;
+    text-decoration-color: var(--lamp);
+    text-underline-offset: 0.35em;
+    text-decoration-thickness: 2px;
+  }
 }
-@utility wrap { width: min(100% - 2rem, 72rem); margin-inline: auto; }
+
+@utility wrap {
+  width: min(100% - 2rem, 76rem);
+  margin-inline: auto;
+}
+
+@utility wrap-narrow {
+  width: min(100% - 2rem, 42rem);
+  margin-inline: auto;
+}
+
 @layer components {
-  .button { display: inline-flex; align-items: center; justify-content: center; min-height: 2.75rem; padding: .6rem 1.2rem; border: 1px solid var(--accent); border-radius: var(--radius-ui); background: var(--accent); color: var(--on-accent); font-weight: 600; text-decoration: none; }
-  .button:hover { text-decoration: underline; }
-  .button-quiet { background: var(--surface); color: var(--accent-ink); border-color: var(--line); }
-  .text-link { color: var(--accent-ink); text-decoration: underline; }
-  .eyebrow { font-size: .8rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
-  .skip-link { position: absolute; left: 1rem; top: -8rem; padding: .75rem; z-index: 200; background: var(--surface); }
-  .skip-link:focus { top: 1rem; }
+  /* Laid rag-paper texture: fine horizontal laid lines, wider vertical chain lines, warm lamp pool */
+  .paper-grain {
+    background-color: var(--paper);
+    background-image:
+      radial-gradient(ellipse 68% 58% at 14% 10%, color-mix(in oklab, var(--lamp) 11%, transparent) 0%, transparent 62%),
+      radial-gradient(ellipse 55% 50% at 92% 88%, color-mix(in oklab, var(--gilt) 8%, transparent) 0%, transparent 58%),
+      repeating-linear-gradient(
+        0deg,
+        color-mix(in oklab, var(--ink) 2.2%, transparent) 0px,
+        color-mix(in oklab, var(--ink) 2.2%, transparent) 1px,
+        transparent 1px,
+        transparent 5px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        color-mix(in oklab, var(--ink) 2.8%, transparent) 0px,
+        color-mix(in oklab, var(--ink) 2.8%, transparent) 1px,
+        transparent 1px,
+        transparent 44px
+      );
+  }
+
+  /* Hero stage: warm lamplight wash spilling across laid paper toward the title column */
+  .hero-stage {
+    background-color: var(--paper);
+    background-image:
+      radial-gradient(ellipse 62% 72% at 72% 48%, color-mix(in oklab, var(--lamp) 16%, transparent) 0%, transparent 68%),
+      radial-gradient(ellipse 50% 45% at 10% 15%, color-mix(in oklab, var(--gilt) 10%, transparent) 0%, transparent 60%),
+      linear-gradient(to bottom var(--in-oklab), color-mix(in oklab, var(--paper-edge) 28%, transparent) 0%, transparent 18%, transparent 86%, color-mix(in oklab, var(--paper-edge) 35%, transparent) 100%),
+      repeating-linear-gradient(
+        0deg,
+        color-mix(in oklab, var(--ink) 2.2%, transparent) 0px,
+        color-mix(in oklab, var(--ink) 2.2%, transparent) 1px,
+        transparent 1px,
+        transparent 5px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        color-mix(in oklab, var(--ink) 2.6%, transparent) 0px,
+        color-mix(in oklab, var(--ink) 2.6%, transparent) 1px,
+        transparent 1px,
+        transparent 44px
+      );
+  }
+
+  /* Bookbinding endpaper diamond lattice on deeper rag stock */
+  .paper-deep-grain {
+    background-color: var(--paper-deep);
+    background-image:
+      radial-gradient(ellipse 64% 58% at 82% 20%, color-mix(in oklab, var(--lamp) 11%, transparent) 0%, transparent 56%),
+      radial-gradient(ellipse 52% 48% at 15% 84%, color-mix(in oklab, var(--oxblood) 5%, transparent) 0%, transparent 58%),
+      repeating-linear-gradient(
+        45deg,
+        color-mix(in oklab, var(--gilt) 8%, transparent) 0px,
+        color-mix(in oklab, var(--gilt) 8%, transparent) 1px,
+        transparent 1px,
+        transparent 22px
+      ),
+      repeating-linear-gradient(
+        -45deg,
+        color-mix(in oklab, var(--gilt) 8%, transparent) 0px,
+        color-mix(in oklab, var(--gilt) 8%, transparent) 1px,
+        transparent 1px,
+        transparent 22px
+      );
+  }
+
+  /* Archival ledger ruling for events & programme bands */
+  .paper-ledger {
+    background-color: var(--paper);
+    background-image:
+      radial-gradient(ellipse 60% 50% at 85% 15%, color-mix(in oklab, var(--lamp) 9%, transparent) 0%, transparent 60%),
+      repeating-linear-gradient(
+        180deg,
+        transparent 0px,
+        transparent 29px,
+        color-mix(in oklab, var(--gilt) 16%, transparent) 29px,
+        color-mix(in oklab, var(--gilt) 16%, transparent) 30px
+      );
+  }
+
+  /* Walnut shelf band with fine horizontal wood-grain lines and warm overhead lamp glow */
+  .walnut-band {
+    background-color: var(--walnut);
+    color: var(--walnut-ink);
+    background-image:
+      radial-gradient(ellipse 58% 68% at 50% 18%, color-mix(in oklab, var(--lamp) 16%, transparent) 0%, transparent 70%),
+      repeating-linear-gradient(
+        180deg,
+        transparent 0px,
+        transparent 5px,
+        color-mix(in oklab, #000000 13%, transparent) 5px,
+        color-mix(in oklab, #000000 13%, transparent) 6px,
+        transparent 6px,
+        transparent 13px,
+        color-mix(in oklab, var(--gilt) 6%, transparent) 13px,
+        color-mix(in oklab, var(--gilt) 6%, transparent) 14px
+      ),
+      linear-gradient(180deg, color-mix(in oklab, #000000 24%, transparent) 0%, transparent 16%, transparent 84%, color-mix(in oklab, #000000 28%, transparent) 100%);
+  }
+
+  /* Carved walnut & brass cornice border for headers and bookcase bands */
+  .border-brass-moulding {
+    border-bottom: 2px solid color-mix(in oklab, var(--gilt) 80%, var(--walnut-deep));
+    box-shadow:
+      0 2px 0 0 var(--walnut-deep),
+      0 3px 0 0 color-mix(in oklab, var(--gilt) 50%, transparent),
+      0 8px 20px color-mix(in oklab, #000000 18%, transparent);
+  }
+
+  /* Woven cloth crosshatch for book spines and primary buttons */
+  .cloth-weave {
+    background-image:
+      repeating-linear-gradient(
+        45deg,
+        color-mix(in oklab, #ffffff 7%, transparent) 0px,
+        color-mix(in oklab, #ffffff 7%, transparent) 1px,
+        transparent 1px,
+        transparent 4px
+      ),
+      repeating-linear-gradient(
+        -45deg,
+        color-mix(in oklab, #000000 10%, transparent) 0px,
+        color-mix(in oklab, #000000 10%, transparent) 1px,
+        transparent 1px,
+        transparent 4px
+      );
+  }
+
+  /* Seamless feathered edge blend for the light/dark editorial hero illustration */
+  .hero-illustration-blend {
+    -webkit-mask-image:
+      linear-gradient(to right, transparent 0%, #000 5%, #000 95%, transparent 100%),
+      linear-gradient(to bottom, transparent 0%, #000 5%, #000 95%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-image:
+      linear-gradient(to right, transparent 0%, #000 5%, #000 95%, transparent 100%),
+      linear-gradient(to bottom, transparent 0%, #000 5%, #000 95%, transparent 100%);
+    mask-composite: intersect;
+  }
+
+  .running-head {
+    font-family: var(--font-sc);
+    font-size: 0.88rem;
+    letter-spacing: 0.14em;
+    text-transform: lowercase;
+    color: var(--ink-muted);
+  }
+
+  .folio-numeral {
+    font-family: var(--font-display);
+    font-style: italic;
+    line-height: 0.85;
+    color: color-mix(in oklab, var(--gilt) 55%, transparent);
+    user-select: none;
+  }
+
+  .button-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 2.75rem;
+    padding: 0.65rem 1.4rem;
+    border: 1px solid color-mix(in oklab, var(--gilt) 75%, var(--primary));
+    border-radius: var(--radius-ui);
+    background-color: var(--primary);
+    color: var(--on-primary);
+    font-family: var(--font-sc);
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    box-shadow:
+      inset 0 0 0 2px color-mix(in oklab, var(--gilt) 42%, transparent),
+      0 2px 4px color-mix(in oklab, #000000 14%, transparent),
+      0 6px 14px color-mix(in oklab, #000000 14%, transparent);
+    transition: background-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+  }
+  .button-primary:hover {
+    background-color: var(--primary-hover);
+    text-decoration: none;
+    transform: translateY(-1px);
+    box-shadow:
+      inset 0 0 0 2px color-mix(in oklab, var(--lamp) 55%, transparent),
+      0 4px 8px color-mix(in oklab, #000000 16%, transparent),
+      0 10px 20px color-mix(in oklab, #000000 18%, transparent);
+  }
+
+  .button-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 2.75rem;
+    padding: 0.65rem 1.3rem;
+    border: 1px solid var(--gilt);
+    border-radius: var(--radius-ui);
+    background-color: color-mix(in oklab, var(--surface) 84%, transparent);
+    color: var(--ink);
+    font-family: var(--font-sc);
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    box-shadow:
+      inset 0 0 0 2px color-mix(in oklab, var(--gilt) 18%, transparent),
+      0 2px 6px color-mix(in oklab, #000000 8%, transparent);
+    transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
+  }
+  .button-secondary:hover {
+    background-color: var(--paper-deep);
+    border-color: var(--ink);
+    text-decoration: none;
+    transform: translateY(-1px);
+  }
+
+  .text-link {
+    color: var(--link);
+    text-decoration: underline;
+    text-decoration-color: color-mix(in oklab, var(--gilt) 75%, var(--link));
+    text-underline-offset: 0.22em;
+  }
+  .text-link:hover {
+    color: var(--oxblood);
+  }
+
+  .skip-link {
+    position: absolute;
+    left: 1rem;
+    top: -8rem;
+    padding: 0.75rem 1rem;
+    z-index: 200;
+    background: var(--walnut);
+    color: var(--walnut-ink);
+    border: 1px solid var(--gilt);
+    font-family: var(--font-sc);
+  }
+  .skip-link:focus {
+    top: 1rem;
+  }
+
+  /* Hanging open-now sign */
+  .hanging-sign {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.48rem 1rem;
+    border: 1px solid var(--gilt);
+    border-radius: 2px;
+    background-color: var(--surface);
+    color: var(--ink);
+    font-family: var(--font-sc);
+    font-size: 0.92rem;
+    letter-spacing: 0.04em;
+    box-shadow:
+      inset 0 0 0 3px var(--surface),
+      inset 0 0 0 4px color-mix(in oklab, var(--gilt) 42%, transparent),
+      0 3px 10px color-mix(in oklab, #000000 12%, transparent);
+  }
+
+  /* Brass opening hours plaque with subtle brushed metallic sheen */
+  .brass-plaque {
+    border: 2px solid var(--gilt);
+    background-color: var(--surface);
+    background-image: linear-gradient(
+      135deg var(--in-oklab),
+      color-mix(in oklab, var(--lamp) 7%, transparent) 0%,
+      transparent 42%,
+      color-mix(in oklab, var(--gilt) 9%, transparent) 100%
+    );
+    box-shadow:
+      inset 0 0 0 4px var(--surface),
+      inset 0 0 0 5px color-mix(in oklab, var(--gilt) 68%, transparent),
+      0 3px 8px color-mix(in oklab, #000000 8%, transparent),
+      0 12px 26px color-mix(in oklab, #000000 10%, transparent);
+    position: relative;
+  }
+
+  /* Ex-libris bookplate panel with gilt corner fillets */
+  .bookplate-panel {
+    position: relative;
+    border: 2px solid var(--gilt);
+    background-color: var(--surface);
+    background-image:
+      linear-gradient(to right, var(--oxblood) 100%, transparent 0),
+      linear-gradient(to bottom, var(--oxblood) 100%, transparent 0),
+      linear-gradient(to left, var(--oxblood) 100%, transparent 0),
+      linear-gradient(to bottom, var(--oxblood) 100%, transparent 0),
+      linear-gradient(to right, var(--oxblood) 100%, transparent 0),
+      linear-gradient(to top, var(--oxblood) 100%, transparent 0),
+      linear-gradient(to left, var(--oxblood) 100%, transparent 0),
+      linear-gradient(to top, var(--oxblood) 100%, transparent 0);
+    background-size:
+      14px 2px, 2px 14px,
+      14px 2px, 2px 14px,
+      14px 2px, 2px 14px,
+      14px 2px, 2px 14px;
+    background-position:
+      10px 10px, 10px 10px,
+      calc(100% - 10px) 10px, calc(100% - 10px) 10px,
+      10px calc(100% - 10px), 10px calc(100% - 10px),
+      calc(100% - 10px) calc(100% - 10px), calc(100% - 10px) calc(100% - 10px);
+    background-repeat: no-repeat;
+    box-shadow:
+      inset 0 0 0 5px var(--surface),
+      inset 0 0 0 6px color-mix(in oklab, var(--gilt) 68%, transparent),
+      0 4px 10px color-mix(in oklab, #000000 7%, transparent),
+      0 14px 30px color-mix(in oklab, #000000 10%, transparent);
+  }
+
+  /* Folded correspondence sheet for Closing Letter */
+  .letter-sheet {
+    position: relative;
+    background-color: var(--surface);
+    background-image:
+      linear-gradient(
+        180deg,
+        transparent 0%,
+        transparent calc(50% - 1px),
+        color-mix(in oklab, var(--ink) 5%, transparent) 50%,
+        color-mix(in oklab, #ffffff 10%, transparent) calc(50% + 1px),
+        transparent 52%
+      ),
+      radial-gradient(ellipse 80% 60% at 50% 0%, color-mix(in oklab, var(--lamp) 7%, transparent) 0%, transparent 70%);
+    border: 1px solid var(--gilt);
+    box-shadow:
+      inset 0 0 0 6px var(--surface),
+      inset 0 0 0 7px color-mix(in oklab, var(--gilt) 48%, transparent),
+      0 4px 12px color-mix(in oklab, #000000 8%, transparent),
+      0 18px 36px color-mix(in oklab, #000000 11%, transparent);
+  }
+
+  /* Library date-due slip (Home Coming up) with subtle ruled lines & oxblood header rule */
+  .date-slip {
+    position: relative;
+    background-color: var(--surface);
+    background-image:
+      linear-gradient(
+        180deg,
+        color-mix(in oklab, var(--oxblood) 14%, transparent) 0px,
+        color-mix(in oklab, var(--oxblood) 14%, transparent) 3px,
+        transparent 3px,
+        transparent 6px,
+        color-mix(in oklab, var(--gilt) 25%, transparent) 6px,
+        color-mix(in oklab, var(--gilt) 25%, transparent) 7px,
+        transparent 7px
+      ),
+      repeating-linear-gradient(
+        180deg,
+        transparent 0px,
+        transparent 27px,
+        color-mix(in oklab, var(--line) 42%, transparent) 27px,
+        color-mix(in oklab, var(--line) 42%, transparent) 28px
+      );
+    border: 1px solid color-mix(in oklab, var(--gilt) 65%, var(--line));
+    box-shadow:
+      0 2px 5px color-mix(in oklab, #000000 7%, transparent),
+      0 10px 24px color-mix(in oklab, #000000 11%, transparent);
+    transition: transform 220ms ease, box-shadow 220ms ease;
+  }
+  .date-slip:hover {
+    transform: translateY(-3px) rotate(0deg);
+    box-shadow:
+      0 4px 8px color-mix(in oklab, #000000 9%, transparent),
+      0 14px 30px color-mix(in oklab, #000000 15%, transparent);
+  }
+
+  /* Ticket stub with perforated left edge & semicircular punch notches (Events programme) */
+  .ticket-stub {
+    position: relative;
+    background-color: var(--surface);
+    background-image:
+      linear-gradient(
+        90deg,
+        color-mix(in oklab, var(--paper-deep) 48%, transparent) 0%,
+        color-mix(in oklab, var(--paper-deep) 48%, transparent) 24%,
+        transparent 24%
+      );
+    border: 1px solid color-mix(in oklab, var(--gilt) 60%, var(--line));
+    border-left: 3px dashed var(--gilt);
+    box-shadow:
+      0 2px 5px color-mix(in oklab, #000000 6%, transparent),
+      0 8px 18px color-mix(in oklab, #000000 9%, transparent);
+  }
+  .ticket-stub::before,
+  .ticket-stub::after {
+    content: '';
+    position: absolute;
+    left: -0.55rem;
+    width: 0.9rem;
+    height: 0.9rem;
+    border-radius: 9999px;
+    background-color: var(--paper);
+    border: 1px solid color-mix(in oklab, var(--gilt) 60%, var(--line));
+    pointer-events: none;
+  }
+  .ticket-stub::before {
+    top: -0.5rem;
+  }
+  .ticket-stub::after {
+    bottom: -0.5rem;
+  }
+
+  /* Library borrowing card with ruled rows & double ledger rule */
+  .borrowing-card {
+    background-color: var(--surface);
+    background-image:
+      linear-gradient(
+        180deg,
+        color-mix(in oklab, var(--oxblood) 14%, transparent) 0px,
+        color-mix(in oklab, var(--oxblood) 14%, transparent) 3px,
+        transparent 3px,
+        transparent 6px,
+        color-mix(in oklab, var(--gilt) 35%, transparent) 6px,
+        color-mix(in oklab, var(--gilt) 35%, transparent) 7px,
+        transparent 7px
+      );
+    border: 1px solid var(--gilt);
+    box-shadow:
+      0 3px 8px color-mix(in oklab, #000000 7%, transparent),
+      0 12px 26px color-mix(in oklab, #000000 10%, transparent);
+  }
+
+  /* Handwritten shelf-talker index card with faint rag-paper rules */
+  .shelf-talker-card {
+    background-color: var(--surface);
+    background-image:
+      linear-gradient(
+        180deg,
+        color-mix(in oklab, var(--oxblood) 15%, transparent) 0px,
+        color-mix(in oklab, var(--oxblood) 15%, transparent) 2px,
+        transparent 2px
+      ),
+      repeating-linear-gradient(
+        180deg,
+        transparent 0px,
+        transparent 29px,
+        color-mix(in oklab, var(--line) 36%, transparent) 29px,
+        color-mix(in oklab, var(--line) 36%, transparent) 30px
+      );
+    color: var(--ink);
+    border: 1px solid var(--gilt);
+    box-shadow:
+      0 3px 8px color-mix(in oklab, #000000 14%, transparent),
+      0 14px 32px color-mix(in oklab, #000000 26%, transparent);
+    transform-origin: top center;
+    animation: talker-swing 260ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* Book spine button on the walnut shelf with raised binding ribs */
+  .book-spine {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 3px 3px 1px 1px;
+    border: 1px solid color-mix(in oklab, #000000 35%, transparent);
+    box-shadow:
+      inset 3px 0 5px color-mix(in oklab, #ffffff 16%, transparent),
+      inset -4px 0 6px color-mix(in oklab, #000000 30%, transparent),
+      inset 0 2px 3px color-mix(in oklab, #ffffff 12%, transparent),
+      2px 0 6px color-mix(in oklab, #000000 38%, transparent);
+    color: #F6E9CE;
+    transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 220ms ease;
+    transform-origin: bottom center;
+    text-decoration: none;
+  }
+  .book-spine::before,
+  .book-spine::after {
+    content: '';
+    position: absolute;
+    left: 2px;
+    right: 2px;
+    height: 3px;
+    border-top: 1px solid color-mix(in oklab, #ffffff 18%, transparent);
+    border-bottom: 1px solid color-mix(in oklab, #000000 32%, transparent);
+    pointer-events: none;
+  }
+  .book-spine::before {
+    top: 1.45rem;
+  }
+  .book-spine::after {
+    bottom: 1.45rem;
+  }
+  .book-spine:hover,
+  .book-spine:focus-visible,
+  .book-spine[aria-pressed="true"] {
+    transform: translateY(-14px) rotate(-1.5deg);
+    box-shadow:
+      inset 3px 0 6px color-mix(in oklab, #ffffff 20%, transparent),
+      inset -4px 0 8px color-mix(in oklab, #000000 34%, transparent),
+      0 14px 22px color-mix(in oklab, #000000 48%, transparent),
+      0 0 0 2px var(--lamp);
+    z-index: 5;
+    text-decoration: none;
+  }
+
+  /* Pull-chain styling wrapper around Jamstacks DarkModeToggle */
+  .lamp-pull-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+  }
+  .lamp-pull-wrap::before {
+    content: '';
+    position: absolute;
+    top: -1.35rem;
+    left: 50%;
+    width: 2px;
+    height: 1.35rem;
+    transform: translateX(-50%);
+    background: repeating-linear-gradient(
+      180deg,
+      var(--gilt) 0px,
+      var(--gilt) 2px,
+      transparent 2px,
+      transparent 4px
+    );
+    pointer-events: none;
+  }
 }
-.map iframe { width: 100%; min-height: 20rem; border: 0; filter: var(--map-filter); }
-.enquiry__host { display: block; }
-.enquiry__status { margin-top: 1rem; color: var(--muted); }
-.enquiry[data-state="present"] > .enquiry__status { display: none; }
+
+.nav-mobile-link[aria-current="page"] {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--paper-deep);
+  color: var(--link);
+  border-left: 3px solid var(--oxblood);
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--gilt) 60%, transparent);
+  text-decoration: none;
+}
+.nav-mobile-link[aria-current="page"]::after {
+  content: '';
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 9999px;
+  background-color: var(--lamp);
+  box-shadow: 0 0 0 1px var(--gilt);
+  flex-shrink: 0;
+}
+
+.hero-img-light {
+  display: block;
+}
+.hero-img-dark {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) .hero-img-light {
+    display: none;
+  }
+  :root:not(.light) .hero-img-dark {
+    display: block;
+  }
+}
+
+:root.dark .hero-img-light {
+  display: none;
+}
+:root.dark .hero-img-dark {
+  display: block;
+}
+
+/* Keyframes */
+@keyframes lamp-breathe {
+  0%, 100% { opacity: var(--hero-glow-opacity); }
+  50% { opacity: calc(var(--hero-glow-opacity) + 0.12); }
+}
+
+@keyframes talker-swing {
+  0% { opacity: 0.7; transform: perspective(600px) rotateX(-12deg) translateY(-4px); }
+  100% { opacity: 1; transform: perspective(600px) rotateX(0deg) translateY(0); }
+}
+
+.lamp-glow-pulse {
+  animation: lamp-breathe 6.5s ease-in-out infinite;
+}
+
+.map iframe {
+  width: 100%;
+  min-height: 19rem;
+  border: 0;
+  filter: var(--map-filter);
+  display: block;
+}
+
+.enquiry__host {
+  display: block;
+}
+.enquiry__status {
+  margin-top: 1rem;
+  color: var(--ink-muted);
+}
+.enquiry[data-state="present"] > .enquiry__status {
+  display: none;
+}
+
+@media (forced-colors: active) {
+  .brass-plaque,
+  .bookplate-panel,
+  .date-slip,
+  .ticket-stub,
+  .borrowing-card,
+  .shelf-talker-card,
+  .letter-sheet,
+  .hanging-sign,
+  .window-gallery-frame {
+    border: 1px solid CanvasText;
+  }
+  .ticket-stub::before,
+  .ticket-stub::after {
+    display: none;
+  }
+  .book-spine[aria-pressed="true"],
+  header nav [aria-current="page"] {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
 }
+
 @media print {
-  nav, .skip-link, .enquiry, button { display: none !important; }
-  html { background: white; color: black; }
-  a { color: inherit; }
+  header nav,
+  .lamp-pull-wrap,
+  .skip-link,
+  .enquiry,
+  .map,
+  .no-print,
+  button {
+    display: none !important;
+  }
+  html, body, .paper-grain, .hero-stage, .paper-deep-grain, .paper-ledger, .walnut-band {
+    background: #ffffff !important;
+    background-image: none !important;
+    color: #000000 !important;
+  }
+  header, footer, .brass-plaque, .bookplate-panel, .ticket-stub, .date-slip, .borrowing-card, .letter-sheet, .window-gallery-frame {
+    background: #ffffff !important;
+    background-image: none !important;
+    color: #000000 !important;
+    border-color: #222222 !important;
+    box-shadow: none !important;
+  }
+  .ticket-stub::before,
+  .ticket-stub::after {
+    display: none !important;
+  }
+  a {
+    color: #000000 !important;
+  }
 }

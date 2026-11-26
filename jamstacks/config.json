@@ -1,0 +1,19 @@
+{
+  "name": "Lamplit Bookshop",
+  "description": "A cosy independent bookshop with a lamplit shelf of handwritten staff picks, author readings, events and a monthly book club.",
+  "tech": "next",
+  "type": "bookshop",
+  "style": "shelf",
+  "internal": false,
+  "components": [
+    "support-form"
+  ],
+  "configFile": "site.config.json",
+  "screenshots": {
+    "light": "jamstacks/home-light.jpg",
+    "dark": "jamstacks/home-dark.jpg",
+    "theme": {
+      "strategy": "media"
+    }
+  }
+}

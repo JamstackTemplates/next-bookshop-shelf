@@ -1,0 +1,22 @@
+{
+  "templateId": "next-bookshop-shelf",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "fullPage": false,
+  "captures": [
+    {
+      "mode": "light",
+      "sha256": "8e4189ac61564bbf1615af6580660fdb89d3747689f7a135f4b5a3f2a6176604",
+      "file": "jamstacks/home-light.jpg",
+      "bytes": 131409
+    },
+    {
+      "mode": "dark",
+      "sha256": "e7359ce4f4e17a8294d98b845e567760b02a1d751981827d9529af6318b89a83",
+      "file": "jamstacks/home-dark.jpg",
+      "bytes": 133717
+    }
+  ]
+}

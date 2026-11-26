@@ -72,3 +72,16 @@ and Pages never import/read it. Keep site.config.json, the form and workflow out
 light/dark captures after a fresh normal build and run node --test jamstacks/config.test.mjs separately.
 Each new template needs its own business-led layout/fonts/art and OG image; do not ship the neutral
 starter as a final design. Remove `plan/` and `.claude/skills/` before publishing a gallery template once reviewed.
+
+## Site file ownership
+
+- `content/business.ts`: shop identity, address, directions, opening hours and enquiry copy
+- `content/shelves.ts`: genre shelves and spine colour tokens
+- `content/staff.ts`: bookseller profiles
+- `content/staff-picks.ts`: staff picks, stock status, featured selection and shelf-talker notes
+- `content/events.ts`: chronological shop events programme
+- `content/book-club.ts`: current book-club event reference, discussion prompts and discount
+- `app/**/page.tsx`: page-specific copy and layout composition
+- `components/art/*`: bespoke inline SVG illustrations, dividers, motifs and icons
+- `lib/hours.ts` and `lib/events.ts`: `Europe/London` opening-hours and past-event helpers
+- `lib/structured-data.ts`: `BookStore` and `Event` JSON-LD schemas
